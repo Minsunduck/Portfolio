@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>민겨례의 Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-icon">M</span>
+                <span class="logo-text">MARIA</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="contact-btn">Contact Me</button>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <p class="hero-subtitle">어떠한 상황에서도 웃음을 잃지 않는 디자이너</p>
+                    <div class="hero-tagline">HELLO</div>
+                    <h1 class="hero-title">민겨례</h1>
+
+                    <p class="hero-description">Fashion That Exists In Everything. Style Is A Way To Say Who You Are
+                        Without Having To Speak.</p>
+                    <button class="hero-btn">See My Work</button>
+                    <div class="social-links">
+                        <a href="#" class="social-link facebook">f</a>
+                        <a href="#" class="social-link instagram">📷</a>
+                        <a href="#" class="social-link twitter">🐦</a>
+                        <a href="#" class="social-link linkedin">in</a>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <div class="hero-image-container">
+                        <div class="stats-card clients">
+                            <div class="stats-number">100</div>
+                            <div class="stats-text">Worldwide<br>Clients</div>
+                        </div>
+                        <div class="stats-card experience">
+                            <div class="stats-number">10</div>
+                            <div class="stats-text">Years Of<br>Experience</div>
+                        </div>
+                        <img src="https://themes.creativehunk.com/maria/img/about-img.png" alt="Maria"
+                            class="hero-image">
+                        <div class="geometric-shape shape-1"></div>
+                        <div class="geometric-shape shape-2"></div>
+                        <div class="geometric-shape shape-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <div class="title-decoration"></div>
+                <h2>about me</h2>
+                <div class="title-decoration"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-left">
+                    <h3>Senior Model Maria from New York</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at donec diam. Felis nec sit
+                        a in sodales. Quis pellentesque nisl laoreet sagittis. Pharetra ac aliquet egestas rhoncus
+                        aliquam</p>
+                    <div class="about-info">
+                        <div class="info-group">
+                            <div class="info-item">
+                                <span class="info-label">name</span>
+                                <span class="info-value">maria</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">email</span>
+                                <span class="info-value">Info@maria.com</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">phone</span>
+                                <span class="info-value">+123 654 98752</span>
+                            </div>
+                        </div>
+                        <div class="info-group">
+                            <div class="info-item">
+                                <span class="info-label">age</span>
+                                <span class="info-value">24 years</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">education</span>
+                                <span class="info-value">Computer Engineer</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">profession</span>
+                                <span class="info-value">model</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="download-cv">download my cv</button>
+                </div>
+                <div class="about-right">
+                    <h4>skills</h4>
+                    <div class="skills">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Social Media model</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="70"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Modeling Agency</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Freelancer Modeling</span>
+                                <span>55%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="55"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Model Management</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <div class="title-decoration"></div>
+                    <h2>Maria Services</h2>
+                    <div class="title-decoration"></div>
+                </div>
+                <p class="section-description">Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at
+                    donec diam. Felis nec sit a in sodales. Quis pellentesque nisl laoreet sagittis.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="https://themes.creativehunk.com/maria/img/service-img-1.png" alt="Ramp Shows">
+                    <h4>Ramp Shows</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at donec diam. Felis nec sit
+                        a in sodales.</p>
+                </div>
+                <div class="service-card">
+                    <img src="https://themes.creativehunk.com/maria/img/service-img-2.png" alt="Photo Shoot">
+                    <h4>Photo Shoot</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at donec diam. Felis nec sit
+                        a in sodales.</p>
+                </div>
+                <div class="service-card">
+                    <img src="https://themes.creativehunk.com/maria/img/service-img-3.png" alt="Product Ads">
+                    <h4>Product Ads</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at donec diam. Felis nec sit
+                        a in sodales.</p>
+                </div>
+                <div class="service-card">
+                    <img src="https://themes.creativehunk.com/maria/img/service-img-4.png" alt="Photo Taken">
+                    <h4>Photo Taken</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at donec diam. Felis nec sit
+                        a in sodales.</p>
+                </div>
+                <div class="service-card">
+                    <img src="https://themes.creativehunk.com/maria/img/service-img-5.png" alt="Smiles">
+                    <h4>Smiles</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at donec diam. Felis nec sit
+                        a in sodales.</p>
+                </div>
+                <div class="service-card">
+                    <img src="https://themes.creativehunk.com/maria/img/service-img-6.png" alt="Modeling">
+                    <h4>Modeling</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at donec diam. Felis nec sit
+                        a in sodales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <div class="title-decoration"></div>
+                    <h2>MY AMAZING SHOTS</h2>
+                    <div class="title-decoration"></div>
+                </div>
+                <p class="section-description">Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at
+                    donec diam. Felis nec sit a in sodales. Quis pellentesque nisl laoreet sagittis.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://themes.creativehunk.com/maria/img/shots-img-1.png" alt="Maria Macias">
+                    <div class="gallery-overlay">
+                        <h4>Maria Macias</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur. Morbi id cras felis.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://themes.creativehunk.com/maria/img/shots-img-2.png" alt="Maria Macias">
+                    <div class="gallery-overlay">
+                        <h4>Maria Macias</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur. Morbi id cras felis.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://themes.creativehunk.com/maria/img/shots-img-3.png" alt="Maria Macias">
+                    <div class="gallery-overlay">
+                        <h4>Maria Macias</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur. Morbi id cras felis.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://themes.creativehunk.com/maria/img/shots-img-4.png" alt="Maria Macias">
+                    <div class="gallery-overlay">
+                        <h4>Maria Macias</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur. Morbi id cras felis.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://themes.creativehunk.com/maria/img/shots-img-5.png" alt="Maria Macias">
+                    <div class="gallery-overlay">
+                        <h4>Maria Macias</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur. Morbi id cras felis.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://themes.creativehunk.com/maria/img/shots-img-6.png" alt="Maria Macias">
+                    <div class="gallery-overlay">
+                        <h4>Maria Macias</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur. Morbi id cras felis.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://themes.creativehunk.com/maria/img/shots-img-7.png" alt="Maria Macias">
+                    <div class="gallery-overlay">
+                        <h4>Maria Macias</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur. Morbi id cras felis.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://themes.creativehunk.com/maria/img/shots-img-8.png" alt="Maria Macias">
+                    <div class="gallery-overlay">
+                        <h4>Maria Macias</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur. Morbi id cras felis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section class="journey">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <div class="title-decoration"></div>
+                    <h2>MY JOURNEY EXPERIANCE</h2>
+                    <div class="title-decoration"></div>
+                </div>
+                <p class="section-description">Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at
+                    donec diam. Felis nec sit a in sodales. Quis pellentesque nisl laoreet sagittis.</p>
+            </div>
+            <div class="journey-timeline">
+                <div class="journey-item">
+                    <img src="https://themes.creativehunk.com/maria/img/journey-img-1.png" alt="I Did Modeling">
+                    <div class="journey-content">
+                        <h4>I Did Modeling</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at donec diam. Felis nec
+                            sit a in sodales.</p>
+                    </div>
+                </div>
+                <div class="journey-item">
+                    <img src="https://themes.creativehunk.com/maria/img/journey-img-2.png" alt="I Did Photoshots">
+                    <div class="journey-content">
+                        <h4>I Did Photoshots</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at donec diam. Felis nec
+                            sit a in sodales.</p>
+                    </div>
+                </div>
+                <div class="journey-item">
+                    <img src="https://themes.creativehunk.com/maria/img/journey-img-3.png" alt="I Did Advertisement">
+                    <div class="journey-content">
+                        <h4>I Did Advertisement</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at donec diam. Felis nec
+                            sit a in sodales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <div class="title-decoration"></div>
+                    <h2>SEE MY PORTFOLIO</h2>
+                    <div class="title-decoration"></div>
+                </div>
+                <p class="section-description">Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at
+                    donec diam. Felis nec sit a in sodales. Quis pellentesque nisl laoreet sagittis.</p>
+            </div>
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="modeling">Modeling</button>
+                <button class="filter-btn" data-filter="fashion">Fashion</button>
+                <button class="filter-btn" data-filter="ads">Ads</button>
+                <button class="filter-btn" data-filter="awards">Awards</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="modeling">
+                    <img src="https://themes.creativehunk.com/maria/img/portfolio-img-1.png" alt="Portfolio Item">
+                    <div class="portfolio-overlay">
+                        <h4>model</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="fashion">
+                    <img src="https://themes.creativehunk.com/maria/img/portfolio-img-2.png" alt="Portfolio Item">
+                    <div class="portfolio-overlay">
+                        <h4>model</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="ads">
+                    <img src="https://themes.creativehunk.com/maria/img/portfolio-img-3.png" alt="Portfolio Item">
+                    <div class="portfolio-overlay">
+                        <h4>model</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="awards">
+                    <img src="https://themes.creativehunk.com/maria/img/portfolio-img-4.png" alt="Portfolio Item">
+                    <div class="portfolio-overlay">
+                        <h4>model</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="modeling">
+                    <img src="https://themes.creativehunk.com/maria/img/portfolio-img-5.png" alt="Portfolio Item">
+                    <div class="portfolio-overlay">
+                        <h4>model</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="fashion">
+                    <img src="https://themes.creativehunk.com/maria/img/portfolio-img-6.png" alt="Portfolio Item">
+                    <div class="portfolio-overlay">
+                        <h4>model</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <div class="title-decoration"></div>
+                    <h2>CLIENT TESTIMONIALS</h2>
+                    <div class="title-decoration"></div>
+                </div>
+                <p class="section-description">Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at
+                    donec diam. Felis nec sit a in sodales. Quis pellentesque nisl laoreet sagittis.</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial-item active">
+                    <img src="https://themes.creativehunk.com/maria/img/testimonial-img-1.png" alt="Client">
+                    <p>Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at donec diam. Felis nec sit
+                        a in sodales.</p>
+                    <h4>janice C. campbe</h4>
+                    <span>model</span>
+                </div>
+                <div class="testimonial-item">
+                    <img src="https://themes.creativehunk.com/maria/img/testimonial-img-2.png" alt="Client">
+                    <p>Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at donec diam. Felis nec sit
+                        a in sodales.</p>
+                    <h4>janice C. campbe</h4>
+                    <span>model</span>
+                </div>
+                <div class="testimonial-item">
+                    <img src="https://themes.creativehunk.com/maria/img/testimonial-img-3.png" alt="Client">
+                    <p>Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at donec diam. Felis nec sit
+                        a in sodales.</p>
+                    <h4>janice C. campbe</h4>
+                    <span>model</span>
+                </div>
+            </div>
+            <div class="testimonial-nav">
+                <button class="prev-btn">&lt;</button>
+                <button class="next-btn">&gt;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <div class="title-decoration"></div>
+                    <h2>MY FASHION BLOG</h2>
+                    <div class="title-decoration"></div>
+                </div>
+                <p class="section-description">Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at
+                    donec diam. Felis nec sit a in sodales. Quis pellentesque nisl laoreet sagittis.</p>
+            </div>
+            <div class="blog-grid">
+                <div class="blog-item featured">
+                    <img src="https://themes.creativehunk.com/maria/img/blog-img-1.png" alt="Blog Post">
+                    <div class="blog-content">
+                        <span class="blog-category">model</span>
+                        <h4>A cleansing hot Model or bath at Novia offers fully furnished to fit</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at donec diam. Felis nec
+                            sit a in sodales.</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">Nav 30, 2022</span>
+                            <span class="blog-comments">1 Comments</span>
+                            <span class="blog-views">321 Views</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <img src="https://themes.creativehunk.com/maria/img/blog-img-2.png" alt="Blog Post">
+                    <div class="blog-content">
+                        <h5>A cleansing hot Model or bath at Novia offers fully furnished to fit</h5>
+                        <div class="blog-meta">
+                            <span class="blog-date">Nav 30, 2022</span>
+                            <span class="blog-views">321 Views</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <img src="https://themes.creativehunk.com/maria/img/blog-img-3.png" alt="Blog Post">
+                    <div class="blog-content">
+                        <h5>A cleansing hot Model or bath at Novia offers fully furnished to fit</h5>
+                        <div class="blog-meta">
+                            <span class="blog-date">Nav 30, 2022</span>
+                            <span class="blog-views">321 Views</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <img src="https://themes.creativehunk.com/maria/img/blog-img-4.png" alt="Blog Post">
+                    <div class="blog-content">
+                        <h5>A cleansing hot Model or bath at Novia offers fully furnished to fit</h5>
+                        <div class="blog-meta">
+                            <span class="blog-date">Nav 30, 2022</span>
+                            <span class="blog-views">321 Views</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <img src="https://themes.creativehunk.com/maria/img/blog-img-5.png" alt="Blog Post">
+                    <div class="blog-content">
+                        <h5>A cleansing hot Model or bath at Novia offers fully furnished to fit</h5>
+                        <div class="blog-meta">
+                            <span class="blog-date">Nav 30, 2022</span>
+                            <span class="blog-views">321 Views</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <img src="https://themes.creativehunk.com/maria/img/blog-img-6.png" alt="Blog Post">
+                    <div class="blog-content">
+                        <h5>A cleansing hot Model or bath at Novia offers fully furnished to fit</h5>
+                        <div class="blog-meta">
+                            <span class="blog-date">Nav 30, 2022</span>
+                            <span class="blog-views">321 Views</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <img src="https://themes.creativehunk.com/maria/img/blog-img-7.png" alt="Blog Post">
+                    <div class="blog-content">
+                        <h5>A cleansing hot Model or bath at Novia offers fully furnished to fit</h5>
+                        <div class="blog-meta">
+                            <span class="blog-date">Nav 30, 2022</span>
+                            <span class="blog-views">321 Views</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <div class="title-decoration"></div>
+                    <h2>GET IN TOUCH</h2>
+                    <div class="title-decoration"></div>
+                </div>
+                <p class="section-description">Lorem ipsum dolor sit amet consectetur. Nunc luctus malesuada massa at
+                    donec diam. Felis nec sit a in sodales. Quis pellentesque nisl laoreet sagittis.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <span class="contact-label">phone</span>
+                            <a href="tel:+12365498752" class="contact-value">+123 654 98752</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-details">
+                            <span class="contact-label">email</span>
+                            <a href="mailto:info@maria.com" class="contact-value">Info@maria.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <span class="contact-label">location</span>
+                            <span class="contact-value">2124 14th St Meridian, MS 39301</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">send message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <span class="logo-icon">M</span>
+                    <span class="logo-text">MARIA</span>
+                </div>
+                <p>&copy; 2024 Maria Portfolio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
