@@ -576,5 +576,5 @@ window.addEventListener('resize', throttle(() => {
 
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Maria Portfolio loaded successfully!');
+    console.log('저의 포트폴리오를 열람해주셔서 감사합니다!');
 });
