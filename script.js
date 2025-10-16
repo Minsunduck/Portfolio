@@ -2,30 +2,30 @@
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 // Loading Animation
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     // Add loading screen
     const loadingScreen = document.createElement('div');
     loadingScreen.className = 'loading';
     loadingScreen.innerHTML = '<div class="loading-spinner"></div>';
     document.body.appendChild(loadingScreen);
-    
+
     setTimeout(() => {
         loadingScreen.classList.add('hidden');
         setTimeout(() => {
             loadingScreen.remove();
         }, 500);
-        
+
         // Initialize animations after loading
         initAnimations();
     }, 1500);
 });
 
 // Add scroll progress bar
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const progressBar = document.createElement('div');
     progressBar.className = 'scroll-progress';
     document.body.appendChild(progressBar);
-    
+
     // Update progress bar on scroll
     gsap.to('.scroll-progress', {
         scaleX: 1,
@@ -48,92 +48,109 @@ function initAnimations() {
         duration: 1,
         ease: 'power3.out'
     });
-    
+
     // Hero section animations
     const heroTl = gsap.timeline();
-    
+
     heroTl.from('.hero-tagline', {
         opacity: 0,
         y: 50,
         duration: 0.8,
         ease: 'power3.out'
     })
-    .from('.hero-title', {
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        ease: 'power3.out'
-    }, '-=0.6')
-    .from('.hero-subtitle', {
-        opacity: 0,
-        y: 30,
-        duration: 0.6,
-        ease: 'power3.out'
-    }, '-=0.4')
-    .from('.hero-description', {
-        opacity: 0,
-        y: 30,
-        duration: 0.6,
-        ease: 'power3.out'
-    }, '-=0.3')
-    .from('.hero-btn', {
-        opacity: 0,
-        y: 30,
-        duration: 0.6,
-        ease: 'power3.out'
-    }, '-=0.3')
-    .from('.social-links .social-link', {
-        opacity: 0,
-        y: 30,
-        duration: 0.4,
-        ease: 'power3.out',
-        stagger: 0.1
-    }, '-=0.2')
-    .from('.hero-image', {
-        opacity: 0,
-        scale: 0.8,
-        duration: 1,
-        ease: 'power3.out'
-    }, '-=1')
-    .from('.stats-card', {
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        ease: 'power3.out',
-        stagger: 0.2
-    }, '-=0.5')
-    .from('.geometric-shape', {
-        opacity: 0,
-        scale: 0,
-        duration: 0.6,
-        ease: 'back.out(1.7)',
-        stagger: 0.1
-    }, '-=0.4');
-    
+        .from('.hero-title', {
+            opacity: 0,
+            y: 50,
+            duration: 0.8,
+            ease: 'power3.out'
+        }, '-=0.6')
+        .from('.hero-subtitle', {
+            opacity: 0,
+            y: 30,
+            duration: 0.6,
+            ease: 'power3.out'
+        }, '-=0.4')
+        .from('.hero-description', {
+            opacity: 0,
+            y: 30,
+            duration: 0.6,
+            ease: 'power3.out'
+        }, '-=0.3')
+        .from('.hero-btn', {
+            y: 30,
+            duration: 0.6,
+            ease: 'power3.out'
+        }, '-=0.3')
+        .from('.social-links .social-link', {
+            opacity: 0,
+            y: 30,
+            duration: 0.4,
+            ease: 'power3.out',
+            stagger: 0.1
+        }, '-=0.2')
+        .from('.hero-image', {
+            opacity: 0,
+            scale: 0.8,
+            duration: 1,
+            ease: 'power3.out'
+        }, '-=1')
+        .from('.stats-card', {
+            opacity: 0,
+            y: 50,
+            duration: 0.8,
+            ease: 'power3.out',
+            stagger: 0.2
+        }, '-=0.5')
+        .from('.geometric-shape', {
+            opacity: 0,
+            scale: 0,
+            duration: 0.6,
+            ease: 'back.out(1.7)',
+            stagger: 0.1
+        }, '-=0.4');
+
     // Animate skill bars when they come into view
-    gsap.utils.toArray('.skill-progress').forEach(bar => {
-        const width = bar.getAttribute('data-width');
-        gsap.fromTo(bar, 
-            { width: '0%' },
-            {
-                width: width + '%',
-                duration: 1.5,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: bar,
-                    start: 'top 80%',
-                    toggleActions: 'play none none reverse'
+
+    const totalLength = 500;
+    const progressBox = $('.chart');
+    function ani() {
+        progressBox.each(function () {
+            console.log(progressBox);
+            let tg = $(this);
+            let title = tg.find('h3');
+            console.log(title);
+            let tgNum = title.attr('data-num');
+            let line = tg.find('line');
+            console.log(tgNum);
+            $({ rate: 0 }).animate(
+                { rate: tgNum },
+                {
+                    duration: 2000,
+                    progress: function () {
+                        let now = this.rate;
+                        let amount = totalLength - (totalLength * now) / 100;
+                        title.text(Math.floor(now))
+                        line.css({ strokeDashoffset: amount })
+                    }
                 }
-            }
-        );
-    });
-    
+            )
+        })
+    }
+    ScrollTrigger.create({
+        trigger: '.charts',
+        start: 'top 80%', /* .charts 상단에서 뷰포트 80%에서 시작 */
+        once: true,
+        onEnter: function () {
+            ani()
+        }
+    })
+
     // Section animations
     gsap.utils.toArray('section').forEach(section => {
-        const elements = section.querySelectorAll('.fade-in, .slide-left, .slide-right, .scale-in, .service-card, .gallery-item, .journey-item, .portfolio-item, .testimonial-item, .blog-item, .contact-item');
-        
+        const elements = section.querySelectorAll('.fade-in, .slide-left, .slide-right, .scale-in, .gallery-item, .journey-item, .portfolio-item, .testimonial-item, .contact-item');
+
         if (elements.length > 0) {
-            gsap.fromTo(elements, 
+            gsap.fromTo(elements,
                 {
                     opacity: 0,
                     y: 50,
@@ -155,7 +172,7 @@ function initAnimations() {
             );
         }
     });
-    
+
     // Parallax effect for hero shapes
     gsap.to('.geometric-shape', {
         y: -100,
@@ -169,22 +186,22 @@ function initAnimations() {
             scrub: true
         }
     });
-    
+
     // Gallery hover effects
     setupGalleryAnimations();
-    
+
     // Portfolio filtering
     setupPortfolioFilter();
-    
+
     // Testimonials carousel
     setupTestimonialsCarousel();
-    
+
     // Form handling
     setupContactForm();
-    
+
     // Smooth scrolling for navigation
     setupSmoothScrolling();
-    
+
     // Mobile menu
     setupMobileMenu();
 }
@@ -192,16 +209,16 @@ function initAnimations() {
 // Gallery animations
 function setupGalleryAnimations() {
     const galleryItems = document.querySelectorAll('.gallery-item');
-    
+
     galleryItems.forEach(item => {
         const overlay = item.querySelector('.gallery-overlay');
         const image = item.querySelector('img');
-        
+
         item.addEventListener('mouseenter', () => {
             gsap.to(image, { scale: 1.1, duration: 0.4, ease: 'power2.out' });
             gsap.to(overlay, { y: 0, duration: 0.4, ease: 'power2.out' });
         });
-        
+
         item.addEventListener('mouseleave', () => {
             gsap.to(image, { scale: 1, duration: 0.4, ease: 'power2.out' });
             gsap.to(overlay, { y: '100%', duration: 0.4, ease: 'power2.out' });
@@ -213,15 +230,15 @@ function setupGalleryAnimations() {
 function setupPortfolioFilter() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const portfolioItems = document.querySelectorAll('.portfolio-item');
-    
+
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             // Update active button
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            
+
             const filter = btn.getAttribute('data-filter');
-            
+
             // Animate items out
             gsap.to(portfolioItems, {
                 opacity: 0,
@@ -239,13 +256,13 @@ function setupPortfolioFilter() {
                             item.style.display = 'none';
                         }
                     });
-                    
+
                     // Animate visible items back in
-                    const visibleItems = Array.from(portfolioItems).filter(item => 
+                    const visibleItems = Array.from(portfolioItems).filter(item =>
                         item.style.display !== 'none'
                     );
-                    
-                    gsap.fromTo(visibleItems, 
+
+                    gsap.fromTo(visibleItems,
                         { opacity: 0, scale: 0.8 },
                         {
                             opacity: 1,
@@ -267,12 +284,12 @@ function setupTestimonialsCarousel() {
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
     let currentIndex = 0;
-    
+
     function showTestimonial(index) {
         testimonialItems.forEach((item, i) => {
             if (i === index) {
                 item.classList.add('active');
-                gsap.fromTo(item, 
+                gsap.fromTo(item,
                     { opacity: 0, y: 30 },
                     { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
                 );
@@ -281,17 +298,17 @@ function setupTestimonialsCarousel() {
             }
         });
     }
-    
+
     prevBtn.addEventListener('click', () => {
         currentIndex = (currentIndex - 1 + testimonialItems.length) % testimonialItems.length;
         showTestimonial(currentIndex);
     });
-    
+
     nextBtn.addEventListener('click', () => {
         currentIndex = (currentIndex + 1) % testimonialItems.length;
         showTestimonial(currentIndex);
     });
-    
+
     // Auto-rotate testimonials
     setInterval(() => {
         currentIndex = (currentIndex + 1) % testimonialItems.length;
@@ -303,10 +320,10 @@ function setupTestimonialsCarousel() {
 function setupContactForm() {
     const form = document.querySelector('.contact-form');
     const submitBtn = document.querySelector('.submit-btn');
-    
+
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         // Animate submit button
         gsap.to(submitBtn, {
             scale: 0.95,
@@ -315,7 +332,7 @@ function setupContactForm() {
             repeat: 1,
             ease: 'power2.inOut'
         });
-        
+
         // Simulate form submission
         setTimeout(() => {
             alert('Thank you for your message! I will get back to you soon.');
@@ -327,17 +344,17 @@ function setupContactForm() {
 // Smooth scrolling for navigation
 function setupSmoothScrolling() {
     const navLinks = document.querySelectorAll('.nav-menu a, .hero-btn');
-    
+
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
-            
+
             if (href.startsWith('#')) {
                 e.preventDefault();
-                
+
                 const targetSection = document.querySelector(href) || document.querySelector('.hero');
                 const offsetTop = targetSection.offsetTop - 80;
-                
+
                 gsap.to(window, {
                     scrollTo: offsetTop,
                     duration: 1.5,
@@ -346,19 +363,28 @@ function setupSmoothScrolling() {
             }
         });
     });
-    
+
     // Contact button in header
-    document.querySelector('.contact-btn').addEventListener('click', (e) => {
-        e.preventDefault();
-        const contactSection = document.querySelector('#contact');
-        const offsetTop = contactSection.offsetTop - 80;
-        
-        gsap.to(window, {
-            scrollTo: offsetTop,
-            duration: 1.5,
-            ease: 'power3.inOut'
+    const contactBtn = document.querySelector('.contact-btn');
+    if (contactBtn) {
+        contactBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const contactSection = document.querySelector('#contact');
+            if (contactSection) {
+                const offsetTop = contactSection.offsetTop - 80;
+
+                gsap.to(window, {
+                    scrollTo: offsetTop,
+                    duration: 1.5,
+                    ease: 'power3.inOut'
+                });
+            } else {
+                console.error('Contact section not found');
+            }
         });
-    });
+    } else {
+        console.error('Contact button not found');
+    }
 }
 
 // Mobile menu
@@ -366,18 +392,18 @@ function setupMobileMenu() {
     const mobileToggle = document.querySelector('.mobile-menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
     let isMenuOpen = false;
-    
+
     mobileToggle.addEventListener('click', () => {
         isMenuOpen = !isMenuOpen;
-        
+
         // Animate hamburger icon
         const spans = mobileToggle.querySelectorAll('span');
-        
+
         if (isMenuOpen) {
             gsap.to(spans[0], { rotation: 45, y: 7, duration: 0.3 });
             gsap.to(spans[1], { opacity: 0, duration: 0.3 });
             gsap.to(spans[2], { rotation: -45, y: -7, duration: 0.3 });
-            
+
             // Show menu
             navMenu.style.display = 'flex';
             navMenu.style.flexDirection = 'column';
@@ -388,8 +414,8 @@ function setupMobileMenu() {
             navMenu.style.background = 'white';
             navMenu.style.padding = '20px';
             navMenu.style.boxShadow = '0 5px 25px rgba(0,0,0,0.1)';
-            
-            gsap.fromTo(navMenu, 
+
+            gsap.fromTo(navMenu,
                 { opacity: 0, y: -20 },
                 { opacity: 1, y: 0, duration: 0.3, ease: 'power3.out' }
             );
@@ -397,7 +423,7 @@ function setupMobileMenu() {
             gsap.to(spans[0], { rotation: 0, y: 0, duration: 0.3 });
             gsap.to(spans[1], { opacity: 1, duration: 0.3 });
             gsap.to(spans[2], { rotation: 0, y: 0, duration: 0.3 });
-            
+
             // Hide menu
             gsap.to(navMenu, {
                 opacity: 0,
@@ -418,7 +444,7 @@ function setupMobileMenu() {
             });
         }
     });
-    
+
     // Close menu when clicking nav links
     const navLinks = document.querySelectorAll('.nav-menu a');
     navLinks.forEach(link => {
@@ -429,20 +455,6 @@ function setupMobileMenu() {
         });
     });
 }
-
-// Header background on scroll
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('.header');
-    const scrolled = window.pageYOffset > 50;
-    
-    if (scrolled) {
-        header.style.background = 'rgba(255, 255, 255, 0.95)';
-        header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-    } else {
-        header.style.background = 'rgba(255, 255, 255, 0.95)';
-        header.style.boxShadow = 'none';
-    }
-});
 
 // Intersection Observer for animations
 const observerOptions = {
@@ -460,7 +472,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const animatedElements = document.querySelectorAll('.service-card, .gallery-item, .journey-item, .portfolio-item, .blog-item');
+    const animatedElements = document.querySelectorAll('.gallery-item, .journey-item, .portfolio-item');
     animatedElements.forEach(el => observer.observe(el));
 });
 
@@ -496,7 +508,7 @@ function throttle(func, wait) {
 // Throttled scroll handler
 const handleScroll = throttle(() => {
     const scrolled = window.pageYOffset;
-    
+
     // Parallax effects
     const shapes = document.querySelectorAll('.geometric-shape');
     shapes.forEach(shape => {
@@ -512,12 +524,6 @@ window.addEventListener('scroll', handleScroll);
 function preloadImages() {
     const images = [
         'https://themes.creativehunk.com/maria/img/about-img.png',
-        'https://themes.creativehunk.com/maria/img/service-img-1.png',
-        'https://themes.creativehunk.com/maria/img/service-img-2.png',
-        'https://themes.creativehunk.com/maria/img/service-img-3.png',
-        'https://themes.creativehunk.com/maria/img/service-img-4.png',
-        'https://themes.creativehunk.com/maria/img/service-img-5.png',
-        'https://themes.creativehunk.com/maria/img/service-img-6.png',
         'https://themes.creativehunk.com/maria/img/shots-img-1.png',
         'https://themes.creativehunk.com/maria/img/shots-img-2.png',
         'https://themes.creativehunk.com/maria/img/shots-img-3.png',
@@ -546,7 +552,7 @@ function preloadImages() {
         'https://themes.creativehunk.com/maria/img/blog-img-6.png',
         'https://themes.creativehunk.com/maria/img/blog-img-7.png'
     ];
-    
+
     images.forEach(src => {
         const img = new Image();
         img.src = src;
@@ -568,6 +574,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+//quick menu
+let win = window;
+const dot = document.querySelector('.dot');
+let body = document.querySelector('body');
+const header = document.querySelector('.header');
+
+win.addEventListener('scroll', () => {
+  let sct = this.scrollY;
+  if (sct > 300) {
+        dot.style.opacity = '1'
+    } else {
+        dot.style.opacity = '0'
+    }
+})
+
+dot.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+
 // Add resize handler for responsive adjustments
 window.addEventListener('resize', throttle(() => {
     // Recalculate positions and animations on resize
@@ -577,4 +604,149 @@ window.addEventListener('resize', throttle(() => {
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     console.log('저의 포트폴리오를 열람해주셔서 감사합니다!');
+    
+    // Early setup for contact button (in case user clicks before animations load)
+    const contactBtn = document.querySelector('.contact-btn');
+    if (contactBtn) {
+        contactBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const contactSection = document.querySelector('#contact');
+            if (contactSection) {
+                const offsetTop = contactSection.offsetTop - 80;
+                
+                // Use native scrolling if GSAP hasn't loaded yet
+                if (typeof gsap !== 'undefined' && gsap.to) {
+                    gsap.to(window, {
+                        scrollTo: offsetTop,
+                        duration: 1,
+                        ease: 'power3.inOut'
+                    });
+                } else {
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    }
+
+    // About <-> Skills 토글 기능
+    const aboutContent = document.querySelector('.about-content');
+    const skillsContent = document.querySelector('#skills');
+    const btnAbout = document.querySelector('.about-btn');
+    const btnSkills = document.querySelector('.about-btn-skills');
+
+    if (aboutContent && skillsContent && btnAbout && btnSkills) {
+        // 초기 상태: Skills 숨김
+        skillsContent.style.display = 'none';
+
+        // About 버튼 활성 상태 표시
+        btnAbout.classList.add('active');
+
+        // Skills 버튼 클릭 시
+        btnSkills.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // 버튼 상태 변경
+            btnAbout.classList.remove('active');
+            btnSkills.classList.add('active');
+            
+            // About 내용 숨기고 Skills 내용 보이기 (CSS 스타일 유지)
+            $(aboutContent).fadeOut(300, () => {
+                $(skillsContent).fadeIn(300, () => {
+                    // ScrollTrigger 새로고침 (차트 애니메이션을 위해)
+                    if (typeof ScrollTrigger !== 'undefined') {
+                        ScrollTrigger.refresh();
+                    }
+                });
+            });
+        });
+
+        // About 버튼 클릭 시
+        btnAbout.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // 버튼 상태 변경
+            btnSkills.classList.remove('active');
+            btnAbout.classList.add('active');
+            
+            // Skills 내용 숨기고 About 내용 보이기
+            $(skillsContent).fadeOut(300, () => {
+                $(aboutContent).fadeIn(300);
+            });
+        });
+    }
 });
+
+const animation = bodymovin.loadAnimation({
+	container: document.getElementById('lottie'), // 애니메이션을 표시할 요소
+	renderer: 'svg', // 렌더링 방식 (svg / canvas / html 중 선택)
+	loop: true, // 애니메이션 반복 여부
+	autoplay: true, // 자동 재생 여부
+	path: './assets/webskills.json', // 애니메이션 파일 경로
+});
+
+
+//Portfolio section2
+
+const prjSections = $("#section2 .portfolio");
+
+$(window).on("scroll", function () {
+  let scrollTop = $(window).scrollTop();
+  
+  //project section slide-ins
+  prjSections.each(function (i, o) {
+    if (scrollTop >= prjSections.eq(i).offset().top - speed) {
+      prjSections.eq(i).find(".left").addClass("in");
+      prjSections.eq(i).find(".right").addClass("in");
+    }
+  });
+
+  $(".hidden").hover(
+  function () {
+    let ah = $(this).innerHeight();
+    let img = $(this).find("img");
+    let imgh = img.innerHeight();
+    img.stop().animate({ top: ah - imgh }, 4000);
+  },
+  function () {
+    let img = $(this).find("img");
+    img.stop().animate({ top: 0 }, 4000);
+  }
+);
+});
+
+const clickable = $(".clickable");
+clickable.hover(
+  function () {
+    $("#cursor").addClass("blend2");
+    $(".cursor_dot").addClass("click");
+    $(".cursor_dot_outline").addClass("click");
+  },
+  function () {
+    $("#cursor").removeClass("blend2");
+    $(".cursor_dot").removeClass("click");
+    $(".cursor_dot_outline").removeClass("click");
+  }
+);
+
+$(window).on("scroll", function () {
+  let scrollTop = $(window).scrollTop();
+  sections.each(function (i, o) {
+    if (scrollTop >= sections.eq(i).offset().top - speed) {
+      $("nav ul.gnb li")
+        .eq(i)
+        .addClass("active")
+        .siblings()
+        .removeClass("active");
+    }
+  });
+});
+
+// Respect prefers-reduced-motion
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (prefersReduced) {
+  // GSAP 애니메이션의 duration을 짧게 조정
+  gsap.globalTimeline.timeScale(0.5);
+}
