@@ -332,7 +332,7 @@ h6 {
   height: 100%;
   object-fit: contain;    /* 전체가 보이게 */
   object-position: center;
-  border-radius: 0;    
+  border-radius: 0%;    
   display: block;
   transform: scale(1.2);
 }
@@ -640,6 +640,63 @@ section {
     width: 0%;
     border-radius: 3px;
     transition: width 1.5s ease-in-out;
+}
+
+#skills ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+#skills li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+#skills .skill {
+  flex: 0 0 160px; /* 라벨 너비 */
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: #222;
+}
+
+#skills .bar {
+  position: relative;
+  flex: 1 1 auto;
+  height: 12px;
+  background: #eee;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+#skills .bar .progress {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0; /* JS로 data-rate만큼 채움 */
+  background: linear-gradient(90deg, #8b5cf6 0%, #3b82f6 100%);
+  border-radius: inherit;
+  transition: width 1.2s ease;
+}
+#skills .bar .rate {
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #fff;
+  pointer-events: none;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* 진입 애니메이션 지연(선택) */
+#skills .bar .progress[data-delay] {
+  transition-delay: var(--delay, 0s);
+}
+
+/* 반응형 라벨 줄이기 */
+@media (max-width: 520px) {
+  #skills .skill { flex-basis: 110px; font-size: 14px; }
 }
 
 .personalities-g {

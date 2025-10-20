@@ -713,3 +713,48 @@ function setupCustomCursor() {
   document.addEventListener('mouseleave', () => gsap.to([dot, ring], { opacity: 0, duration: 0.15 }));
   document.addEventListener('mouseenter', () => gsap.to([dot, ring], { opacity: 1, duration: 0.15 }));
 }
+
+/* skills */
+
+(function () {
+    function animateSkills() {
+      const bars = document.querySelectorAll('#skills .bar');
+      bars.forEach((bar, idx) => {
+        const rateEl = bar.querySelector('.rate');
+        const progEl = bar.querySelector('.progress');
+        if (!rateEl || !progEl) return;
+
+        const rate = Number(rateEl.dataset.rate || 0);
+        rateEl.textContent = rate + '%';
+
+        // 순차 지연(시각적 효과)
+        progEl.style.setProperty('--delay', (idx * 0.05) + 's');
+        progEl.setAttribute('data-delay', '');
+        // width 채우기
+        requestAnimationFrame(() => {
+          progEl.style.width = Math.max(0, Math.min(100, rate)) + '%';
+        });
+      });
+    }
+
+    // 뷰포트 진입 시 1회 애니메이션
+    const target = document.querySelector('#skills');
+    if (!target) return;
+
+    const playOnce = (entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateSkills();
+          obs.disconnect();
+        }
+      });
+    };
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(playOnce, { threshold: 0.2 });
+      io.observe(target);
+    } else {
+      // Fallback
+      animateSkills();
+    }
+  })();
