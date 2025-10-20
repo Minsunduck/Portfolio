@@ -17,19 +17,20 @@
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="style.css">
+    <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/gh/leetaewook/gmarket-sans-dynamic-subset/GmarketSans.css" />
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
         rel="stylesheet">
+    <!-- reset -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <!-- gsap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollToPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
-    <!-- Lottie animation library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"
-        integrity="sha512-9t9m8Vf0Q9Q+q08HAlvkgQyZbimD6eNnPMitbP1d0YyT7tQyQq6kItuZdufHaKxB7mA1V8K1k0t3a+o7kQw8ug=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
@@ -66,23 +67,15 @@
                     <div class="hero-tagline">HELLO</div>
                     <h1 class="hero-title">I'm 민겨례</h1>
                     <p class="hero-description"></p>
-                    <a class="hero-btn"
-                        href="https://drive.google.com/file/d/19mWio9XDs9CI7J2oS
-                        target="_blank">RESUME</a>
+                    <a class="hero-btn" href="https://drive.google.com/file/d/19mWio9XDs9CI7J2oSzzJIU9PQgzPTiCf/view?usp=sharing
+                        target=" _blank">RESUME</a>
                     <a class="hero-btn" href="https://github.com/Minsunduck?tab=repositories" target="_blank">GITHUB</a>
                 </div>
                 <div class="hero-right">
                     <div class="hero-image-container">
+                        <img src="./img/profile.png" alt="MYPHOTO">
                         <div class="stats-card clients">
-                            <div class="stats-number">100</div>
-                            <div class="stats-text">Worldwide<br>Clients</div>
                         </div>
-                        <div class="stats-card experience">
-                            <div class="stats-number">10</div>
-                            <div class="stats-text">Years Of<br>Experience</div>
-                        </div>
-                        <!-- Lottie animation will render here -->
-                        <div id="lottie" class="hero-image" role="img" aria-label="MYPHOTO"></div>
                         <div class="geometric-shape shape-1"></div>
                         <div class="geometric-shape shape-2"></div>
                         <div class="geometric-shape shape-3"></div>
@@ -195,39 +188,43 @@
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
         <div class="container">
-            <div class="section-header">
-                <div class="section-title">
-                    <div class="title-decoration"></div>
-                    <h2>Project</h2>
-                    <div class="title-decoration"></div>
-                </div>
-            </div>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
-                    <img src="https://placehold.co/400" alt="Portfolio Item">
-                    <div class="portfolio-overlay">
-                        <h4>model</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    <div class="Project-right">
+                        <h2>PROJECT</h2>
+                        <div class="prj_title">
+                            <span class="prj_name">멍냥상회 앱</span>
+                            <span class="prj_num">02</span>
+                        </div>
+                        <div class="prj_sub">
+                            <span class="prj_skill">[기술 스택]</span>
+                            <span>Photoshop, Illustrator, figma</span>
+                        </div>
+                        <div class="prj_Period"><span>[작업 기간]</span>
+                        <span>Photoshop, Illustrator, figma</span>
                     </div>
-                    <div class="portfolio-desc">
-                        <h4>title</h4>
-                        기술스택 :
-                        <div>html,css,photoshop,figma</div>
-                        <div>배포매체 : </div>
-                        <div>desktop, mobile</div>
-                        <div>작업기간 : </div>
-                        <div>2주</div>
+                        <div>Team Project </div>
                         <div>본인기여도 : </div>
-                        <div>100%</div>
                         <div>브라우저 호환성 : </div>
-                        <div>페이지수 / 특징 : </div>
-                        <div>메인페이지 / 접근성 준수</div>
                     </div>
                 </div>
-
+            </div>
+            <div class="mock">
+                <div class="crop">
+                    <iframe
+                        src="https://embed.figma.com/proto/0Iq6H2S3ltREJ6K3xcxkey/%EB%A9%8D%EB%83%A5%EC%83%81%ED%9A%8C-%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85-%EC%A0%9C%EC%9E%91?page-id=135%3A8600&node-id=336-4322&viewport=106%2C261%2C0.38&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=135%3A9203&embed-host=share&hide-ui=1"
+                        allowfullscreen></iframe>
+                </div>
             </div>
         </div>
+
+
+
+
+
     </section>
+
+    <!-- 프로젝트1 -->
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
@@ -299,6 +296,9 @@
         </div>
     </footer>
     <div class="dot"></div>
+    <!-- 커스텀 커서 -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.4/lottie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="script.js"></script>

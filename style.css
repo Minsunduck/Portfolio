@@ -213,6 +213,14 @@ h6 {
     }
 }
 
+.hero-image-container .hero-profile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   /* 꽉 채우기 */
+    border-radius: 50%;  /* 원형 */
+    display: block;
+}
+
 .hero-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -308,24 +316,25 @@ h6 {
 }
 
 .hero-right {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-image-container {
-    position: relative;
-    width: 450px;
-    height: 450px;
+  width: 100%;      /* 필요 시 조절 */
+  overflow: visible;     /* 잘림 방지 */
 }
 
-/* Make inner lottie canvas/svg cover container like object-fit: cover */
-#lottie {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover;
-    display: block;
+.hero-image-container .hero-profile,
+.hero-image-container > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;    /* 전체가 보이게 */
+  object-position: center;
+  border-radius: 0;    
+  display: block;
+  transform: scale(1.2);
 }
 
 .stats-card {
@@ -339,42 +348,7 @@ h6 {
     animation: floatUp 3s ease-in-out infinite alternate;
 }
 
-.stats-card.clients {
-    top: 50px;
-    left: -80px;
-    animation-delay: 0s;
-}
 
-.stats-card.experience {
-    bottom: 100px;
-    right: -100px;
-    animation-delay: 1.5s;
-}
-
-@keyframes floatUp {
-    0% {
-        transform: translateY(0px);
-    }
-
-    100% {
-        transform: translateY(-10px);
-    }
-}
-
-.stats-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #f7b733;
-    margin-bottom: 5px;
-    font-family: 'Lora', serif;
-}
-
-.stats-text {
-    font-size: 14px;
-    color: #666;
-    line-height: 1.4;
-    font-weight: 500;
-}
 
 .geometric-shape {
     position: absolute;
@@ -714,75 +688,99 @@ line {
 }
 
 /* Portfolio Section */
+
 .portfolio {
-    background: #f8f9fa;
+    min-height: 100vh;
+    scroll-margin-top: 80px;
 }
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 65% 1fr;
     gap: 25px;
+    align-items: start;
 }
 
 .portfolio-item {
-    display: flex;
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    display: contents;
 }
 
-.portfolio-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+.Project-right {
+    grid-column: 2;
+    align-self: start;
 }
 
-.portfolio-item img {
+/* 반응형: 모바일에서는 1컬럼 스택 */
+@media (max-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* project1 */
+
+.mock {
     width: 100%;
-    height: 300px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.portfolio-item:hover img {
-    transform: scale(1.1);
-}
-
-.portfolio-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(247, 183, 51, 0.9);
-    color: white;
+    position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    transform: translateY(-550px);
 }
 
-.portfolio-item:hover .portfolio-overlay {
-    opacity: 1;
+.crop {
+    transform: scale(0.5);
+    width: 482px;
+    height: 1000px;
+    position: absolute;
+    overflow: hidden;
+    border-radius: 12px;
 }
 
-.portfolio-overlay h4 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    text-transform: lowercase;
+iframe {
+
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border: 0;
+    display: block;
 }
 
-.portfolio-overlay p {
-    font-size: 14px;
+.Project-right h2 {
+    font-family: 'Gmarket Sans';
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 3.5vw;
+    margin-top: 45px;
+}
+
+
+.prj_title, .prj_sub, .prj_Period {
+    justify-content: space-between;
+    align-items: baseline;
+    display: flex;
+}
+
+.prj_name {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #f7b733, #fc4a1a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.prj_num {
+    font-family: 'Gmarket Sans';
+    font-weight: 300;
+    font-size: 84px;
+    letter-spacing: -0.01em;
+    font-style: oblique;
+    margin-right: 0.4vw;
+    color: #ebebeb
 }
 
 
 /* Testimonials Section */
-
 .testimonials {
     background: white;
     position: relative;
@@ -1189,4 +1187,50 @@ line {
     100% {
         transform: rotate(360deg);
     }
+}
+
+
+
+.iframe {
+
+    background: #333;
+}
+
+.iframe iframe {
+    width: 500px;
+    height: 800px;
+    transform: scale(0.8);
+}
+
+/* Custom Cursor */
+.cursor-dot, .cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  translate: -50% -50%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0; /* 처음엔 숨김, 움직이면 표시 */
+}
+
+.cursor-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #fc4a1a;
+}
+
+.cursor-ring {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 2px solid #fc4a1a;
+  transition: transform .2s ease, opacity .2s ease, border-color .2s ease;
+}
+
+.cursor-ring.is-hover {
+  transform: scale(1.6);
+  border-color: #f7b733;
+}
+
+/* 터치 기기에서는 숨김 */
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none; }
 }

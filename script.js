@@ -677,76 +677,39 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    setupCustomCursor();
 });
 
-const animation = bodymovin.loadAnimation({
-	container: document.getElementById('lottie'), // 애니메이션을 표시할 요소
-	renderer: 'svg', // 렌더링 방식 (svg / canvas / html 중 선택)
-	loop: true, // 애니메이션 반복 여부
-	autoplay: true, // 자동 재생 여부
-	path: './assets/webskills.json', // 애니메이션 파일 경로
-});
+// Custom cursor setup
+function setupCustomCursor() {
+  const dot = document.querySelector('.cursor-dot');
+  const ring = document.querySelector('.cursor-ring');
+  if (!dot || !ring) return;
+  if (matchMedia('(hover: none), (pointer: coarse)').matches) return;
 
+  const setDot = gsap.quickSetter(dot, 'css');
+  const setRing = gsap.quickSetter(ring, 'css');
+  let x = window.innerWidth / 2, y = window.innerHeight / 2;
 
-//Portfolio section2
+  // 처음 한번 표시
+  gsap.set([dot, ring], { opacity: 1 });
 
-const prjSections = $("#section2 .portfolio");
-
-$(window).on("scroll", function () {
-  let scrollTop = $(window).scrollTop();
-  
-  //project section slide-ins
-  prjSections.each(function (i, o) {
-    if (scrollTop >= prjSections.eq(i).offset().top - speed) {
-      prjSections.eq(i).find(".left").addClass("in");
-      prjSections.eq(i).find(".right").addClass("in");
-    }
+  window.addEventListener('mousemove', (e) => {
+    x = e.clientX; y = e.clientY;
+    // 점은 빠르게, 링은 살짝 딜레이
+    gsap.to(dot, { x, y, duration: 0.06, overwrite: 'auto' });
+    gsap.to(ring, { x, y, duration: 0.18, overwrite: 'auto' });
   });
 
-  $(".hidden").hover(
-  function () {
-    let ah = $(this).innerHeight();
-    let img = $(this).find("img");
-    let imgh = img.innerHeight();
-    img.stop().animate({ top: ah - imgh }, 4000);
-  },
-  function () {
-    let img = $(this).find("img");
-    img.stop().animate({ top: 0 }, 4000);
-  }
-);
-});
-
-const clickable = $(".clickable");
-clickable.hover(
-  function () {
-    $("#cursor").addClass("blend2");
-    $(".cursor_dot").addClass("click");
-    $(".cursor_dot_outline").addClass("click");
-  },
-  function () {
-    $("#cursor").removeClass("blend2");
-    $(".cursor_dot").removeClass("click");
-    $(".cursor_dot_outline").removeClass("click");
-  }
-);
-
-$(window).on("scroll", function () {
-  let scrollTop = $(window).scrollTop();
-  sections.each(function (i, o) {
-    if (scrollTop >= sections.eq(i).offset().top - speed) {
-      $("nav ul.gnb li")
-        .eq(i)
-        .addClass("active")
-        .siblings()
-        .removeClass("active");
-    }
+  // 링크/버튼 위에서 강조
+  const hoverTargets = document.querySelectorAll('a, button, .contact-btn');
+  hoverTargets.forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('is-hover'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('is-hover'));
   });
-});
 
-// Respect prefers-reduced-motion
-const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (prefersReduced) {
-  // GSAP 애니메이션의 duration을 짧게 조정
-  gsap.globalTimeline.timeScale(0.5);
+  // 페이지 벗어나면 숨김
+  document.addEventListener('mouseleave', () => gsap.to([dot, ring], { opacity: 0, duration: 0.15 }));
+  document.addEventListener('mouseenter', () => gsap.to([dot, ring], { opacity: 1, duration: 0.15 }));
 }
