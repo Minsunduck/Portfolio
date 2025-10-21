@@ -6,7 +6,5 @@
     position: relative;
 }
 
-.df {
-    display: flex;
-}
+.flex { display: flex; }
 

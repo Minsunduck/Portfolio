@@ -652,13 +652,11 @@ document.addEventListener('DOMContentLoaded', () => {
             btnAbout.classList.remove('active');
             btnSkills.classList.add('active');
             
-            // About 내용 숨기고 Skills 내용 보이기 (CSS 스타일 유지)
+            resetSkillsBars(); // 초기화
             $(aboutContent).fadeOut(300, () => {
                 $(skillsContent).fadeIn(300, () => {
-                    // ScrollTrigger 새로고침 (차트 애니메이션을 위해)
-                    if (typeof ScrollTrigger !== 'undefined') {
-                        ScrollTrigger.refresh();
-                    }
+                    animateSkillsBars(); // 다시 채우기
+                    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
                 });
             });
         });
@@ -673,6 +671,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Skills 내용 숨기고 About 내용 보이기
             $(skillsContent).fadeOut(300, () => {
+                resetSkillsBars(); // 다음에 다시 들어왔을 때 0%부터
                 $(aboutContent).fadeIn(300);
             });
         });
@@ -699,7 +698,7 @@ function setupCustomCursor() {
     x = e.clientX; y = e.clientY;
     // 점은 빠르게, 링은 살짝 딜레이
     gsap.to(dot, { x, y, duration: 0.06, overwrite: 'auto' });
-    gsap.to(ring, { x, y, duration: 0.18, overwrite: 'auto' });
+    gsap.to(ring, { x, y, duration: 0.06, overwrite: 'auto' });
   });
 
   // 링크/버튼 위에서 강조
@@ -714,47 +713,92 @@ function setupCustomCursor() {
   document.addEventListener('mouseenter', () => gsap.to([dot, ring], { opacity: 1, duration: 0.15 }));
 }
 
-/* skills */
+// ===== Skills bars (single source of truth) =====
+let skillsBarsInitialized = false;
 
-(function () {
-    function animateSkills() {
-      const bars = document.querySelectorAll('#skills .bar');
-      bars.forEach((bar, idx) => {
-        const rateEl = bar.querySelector('.rate');
-        const progEl = bar.querySelector('.progress');
-        if (!rateEl || !progEl) return;
+function resetSkillsBars() {
+  const section = document.querySelector('#skills');
+  if (!section) return;
 
-        const rate = Number(rateEl.dataset.rate || 0);
-        rateEl.textContent = rate + '%';
+  section.querySelectorAll('.bar').forEach(bar => {
+    let progEl = bar.querySelector('.progress');
+    if (!progEl) {
+      progEl = document.createElement('span');
+      progEl.className = 'progress';
+      bar.prepend(progEl);
+    }
+    // 즉시 초기화
+    progEl.style.transition = 'none';
+    progEl.style.width = '0%';
+    void progEl.offsetWidth;           // reflow
+    progEl.style.transition = 'width 1.2s ease';
 
-        // 순차 지연(시각적 효과)
-        progEl.style.setProperty('--delay', (idx * 0.05) + 's');
-        progEl.setAttribute('data-delay', '');
-        // width 채우기
-        requestAnimationFrame(() => {
-          progEl.style.width = Math.max(0, Math.min(100, rate)) + '%';
-        });
-      });
+    const rateEl = bar.querySelector('.rate');
+    if (rateEl) rateEl.textContent = '';
+  });
+
+  skillsBarsInitialized = false;
+}
+
+function animateSkillsBars() {
+  const section = document.querySelector('#skills');
+  if (!section) return;
+
+  const bars = section.querySelectorAll('.bar');
+  bars.forEach((bar, idx) => {
+    const rateEl = bar.querySelector('.rate');
+    if (!rateEl) return;
+
+    let progEl = bar.querySelector('.progress');
+    if (!progEl) {
+      progEl = document.createElement('span');
+      progEl.className = 'progress';
+      bar.prepend(progEl);
     }
 
-    // 뷰포트 진입 시 1회 애니메이션
-    const target = document.querySelector('#skills');
-    if (!target) return;
+    const rate = Math.max(0, Math.min(100, Number(rateEl.dataset.rate || 0)));
+    rateEl.textContent = rate + '%';
 
-    const playOnce = (entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateSkills();
+    // 재생
+    progEl.style.transition = 'none';
+    progEl.style.width = '0%';
+    void progEl.offsetWidth;
+    progEl.style.transition = 'width 1.2s ease';
+    progEl.style.width = rate + '%';
+  });
+
+  skillsBarsInitialized = true;
+}
+
+// Skills bars setup
+function setupSkillsBars() {
+  const section = document.querySelector('#skills');
+  if (!section) return;
+
+  // 보이는 순간 1회 실행
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !skillsBarsInitialized) {
+          animateSkillsBars();
           obs.disconnect();
         }
       });
-    };
+    }, { threshold: 0.2 });
+    io.observe(section);
+  } else {
+    animateSkillsBars();
+  }
 
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver(playOnce, { threshold: 0.2 });
-      io.observe(target);
-    } else {
-      // Fallback
-      animateSkills();
-    }
-  })();
+  // Skills 버튼으로 탭 전환 후에도 보장
+  const btnSkills = document.querySelector('.about-btn-skills');
+  if (btnSkills) {
+    btnSkills.addEventListener('click', () => {
+      setTimeout(() => {
+        if (!skillsBarsInitialized) animateSkillsBars();
+      }, 300);
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', setupSkillsBars);
