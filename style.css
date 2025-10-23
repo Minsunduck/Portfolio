@@ -95,23 +95,10 @@ h6 {
     font-size: 18px;
 }
 
-.logo-icon {
-    background: linear-gradient(135deg, #f7b733, #fc4a1a);
-    color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.logo-text {
-    font-family: 'Lora', serif;
-    color: #333;
+.logo-image {
+    height: 45px;                /* 헤더 높이에 맞게 조정 */
+    width: auto;
+    display: block;
 }
 
 .nav-menu {
@@ -235,7 +222,7 @@ h6 {
     object-fit: contain;
     border-radius: 0 0 0 30%;
     display: block;
-    transform: scale(1.1) translateX(85px) translateY(45px);
+    transform: translateX(85px) translateY(45px);
 }
 
 .bg_shape {
@@ -862,7 +849,7 @@ line {
     overflow: hidden;
     border: 2px solid #e9e9e9;
     border-radius: 3vw;
-    margin-top: 5rem;
+    margin-top: 7rem;
 }
 
 .project-box .img_hover img {
@@ -875,47 +862,30 @@ line {
     overflow: hidden;
     position: relative;
     background: url(./img/movie1.png) no-repeat top center/cover;
+    cursor: pointer;    
+}
+
+.project-box .img_hover .project-link {
+    position: absolute;
+    inset: 0;                        /* 전체 영역 덮기 */
+    display: block;
+    z-index: 3;                      /* .bg 위로 */
+    text-decoration: none;
 }
 
 .project-box li:hover .img_hover {
-  transition: 3s;
-  background-position: bottom;
+    transition: 3s;
+    background-position: bottom;
 }
 
-.project-box li .img_hover .bg {
-  background-color: #0000ff66;
-  position: absolute;
-  bottom: -39.9vw;
-  width: 39.9vw;
-  height: 39.9vw;
-  border-radius: 3vw 3vw 0 0;
-  transition: 0.5s;
-  filter: invert(100%);
-}
+
 
 .project-box li:hover .img_hover .bg {
-  bottom: 0;
+    background-color: #000000a1;
+    width: 100%;
+    height: 100%;
+    border-radius: 3vw;
 }
-
-.project-box .img_hover .buttons,
-.section.projects .buttons {
-  display: flex;
-  gap: 2vw;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-}
-
-.project-box .img_hover .button {
-  overflow: hidden;
-  position: relative;
-  border-radius: 50vw;
-}
-.project-box .img_hover .button .btn {
-  background-color: #fff;
-  border: none;
-}
-
 
 
 
@@ -928,13 +898,13 @@ line {
     width: 100%;
     position: relative;
     display: flex;
-    transform: translateY(-550px);
+    transform: translateY(-930px);
 }
 
 .crop {
     transform: scale(0.5);
-    width: 482px;
-    height: 1000px;
+    width: 600px;
+    height: 1200px;
     position: absolute;
     overflow: hidden;
     border-radius: 12px;
@@ -947,6 +917,7 @@ iframe {
     position: absolute;
     border: 0;
     display: block;
+    transform: scale(1.1);
 }
 
 .prj_title,
@@ -958,9 +929,16 @@ iframe {
     margin-bottom: 10px;
 }
 
+.prj_sub span:last-child {
+white-space: nowrap;
+}
+
 .prj_title {
     margin-top: 10px;
     margin-bottom: 50px;
+    white-space: nowrap; 
+    overflow: visible;
+    min-width: 0;
 }
 
 .prj_name {
@@ -978,7 +956,7 @@ iframe {
     letter-spacing: -0.01em;
     font-style: oblique;
     margin-right: 0.4vw;
-    color: #ebebeb
+    color: #fc4b1ab7
 }
 
 .prj_skill,
@@ -1067,24 +1045,24 @@ iframe {
 }
 
 .cta {
+    display: flex;
     padding: 1rem 0;
-    font-family: "GmarketSans";
-    font-size: 18px;
-    justify-content: flex-end;
-    /* 오른쪽 정렬 */
+    justify-content: flex-start;
+    margin-top: 1rem;
+    white-space: nowrap;  
 }
 
 .cta span {
     display: inline-block;
 }
 
-#project2 .btn {
+#project1 .btn, #project2 .btn {
     padding: 7px 15px;
     position: relative;
     margin-right: 0.3rem;
 }
 
-#project2 .btn:last-child {
+#project1 .btn:last-child, #project2 .btn:last-child {
     margin-right: 0;
 }
 
@@ -1110,7 +1088,7 @@ iframe {
     text-decoration: none;
 }
 
-#project2 .btn.rounded i {
+#project1 .btn.rounded i, #project2 .btn.rounded i {
     font-size: 22px;
     margin-right: 0.3rem;
     background: linear-gradient(135deg, #f7b733, #fc4a1a);
@@ -1123,7 +1101,7 @@ iframe {
 }
 
 /* Hover: gradient → solid white */
-#project2 .btn.rounded:hover i {
+#project1 .btn.rounded:hover i, #project2 .btn.rounded:hover i {
     background: none !important;
     -webkit-background-clip: initial;
     background-clip: initial;
@@ -1135,23 +1113,19 @@ iframe {
     /* 혼합 해제 */
 }
 
-#project2 .btn.rounded .txt-clr {
-    color: #333;
+#project1 .btn.rounded .txt-clr, #project2 .btn.rounded .txt-clr {
+    font-family: 'Gmarket Sans';
+    font-weight: 400;
+    color: #ff782a;
     mix-blend-mode: screen;
-    letter-spacing: 0.01rem;
 }
 
-#project2 .btn.rounded:first-child .txt-clr {
-    top: 1px;
-    margin-left: 0.2rem;
-}
-
-#project2 .btn.rounded:hover .txt-clr {
+#project1 .btn.rounded:hover .txt-clr, #project2 .btn.rounded:hover .txt-clr {
     color: white;
     mix-blend-mode: screen;
 }
 
-#project2 .btn.rounded::before {
+#project1 .btn.rounded::before, #project2 .btn.rounded::before {
     transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     content: "";
     width: 50%;
@@ -1162,7 +1136,7 @@ iframe {
     border-radius: 50px;
 }
 
-#project2 .btn.rounded:hover::before {
+#project1 .btn.rounded:hover::before, #project2 .btn.rounded:hover::before {
     background: linear-gradient(135deg, #f7b733, #fc4a1a);
     width: 100%;
 }
@@ -1591,44 +1565,30 @@ iframe {
 }
 
 /* Custom Cursor */
-.cursor-dot,
-.cursor-ring {
-    position: fixed;
-    top: 0;
-    left: 0;
-    translate: -50% -50%;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0;
-    /* 처음엔 숨김, 움직이면 표시 */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #f7b733, #fc4a1a);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: transform 0.05s ease, opacity 0.3s ease;
+  mix-blend-mode: difference;
 }
 
-.cursor-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #fc4a1a;
-}
-
-.cursor-ring {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: 2px solid #fc4a1a;
-    transition: transform .2s ease, opacity .2s ease, border-color .2s ease;
-}
-
-.cursor-ring.is-hover {
-    transform: scale(1.6);
-    border-color: #f7b733;
+/* 호버 시 살짝 커짐 */
+.custom-cursor.hover {
+  transform: translate(-50%, -50%) scale(1.5);
 }
 
 /* 터치 기기에서는 숨김 */
-@media (hover: none),
-(pointer: coarse) {
-
-    .cursor-dot,
-    .cursor-ring {
-        display: none;
-    }
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor { 
+    display: none !important; 
+  }
 }

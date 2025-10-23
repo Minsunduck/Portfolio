@@ -802,3 +802,57 @@ function setupSkillsBars() {
 }
 
 document.addEventListener('DOMContentLoaded', setupSkillsBars);
+
+// Simple Custom Cursor
+function initSimpleCursor() {
+  // 터치 기기 체크
+  if (matchMedia('(hover: none), (pointer: coarse)').matches) return;
+
+  const cursor = document.querySelector('.custom-cursor');
+  if (!cursor) return;
+
+  // 기본 커서 숨기기 (원하지 않으면 주석 처리)
+  document.body.classList.add('hide-cursor');
+
+  // 마우스 움직임
+  document.addEventListener('mousemove', (e) => {
+    gsap.to(cursor, {
+      x: e.clientX,
+      y: e.clientY,
+      duration: 0.1,
+      ease: "power2.out"
+    });
+  });
+
+  // 페이지 진입/이탈
+  document.addEventListener('mouseenter', () => {
+    gsap.to(cursor, { opacity: 1, duration: 0.3 });
+  });
+  
+  document.addEventListener('mouseleave', () => {
+    gsap.to(cursor, { opacity: 0, duration: 0.3 });
+  });
+
+  // 호버 효과 (선택사항)
+  const hoverElements = document.querySelectorAll('a, button, .contact-btn, .hero-btn, .btn');
+  
+  hoverElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.classList.add('hover');
+    });
+    
+    el.addEventListener('mouseleave', () => {
+      cursor.classList.remove('hover');
+    });
+  });
+
+  // 초기 위치
+  gsap.set(cursor, { 
+    x: window.innerWidth / 2, 
+    y: window.innerHeight / 2,
+    opacity: 1 
+  });
+}
+
+// DOM 로드 후 실행
+document.addEventListener('DOMContentLoaded', initSimpleCursor);
