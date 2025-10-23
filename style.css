@@ -214,41 +214,44 @@ h6 {
 }
 
 /* 이미지 컨테이너 크기 고정 */
-.hero-right { position: relative; }            
+.hero-right {
+    position: relative;
+}
+
 .hero-image-container {
-  position: relative;                            
-  width: 100%;                                
-  height: 100%;
-  overflow: visible;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
 }
 
 /* 이미지는 위로 */
 .hero-image-container .hero-profile,
-.hero-image-container > img {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 0 0 0 30%;
-  display: block;
-  transform: scale(1.1) translateX(85px) translateY(45px);
+.hero-image-container>img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0 0 0 30%;
+    display: block;
+    transform: scale(1.1) translateX(85px) translateY(45px);
 }
 
 .bg_shape {
-  position: absolute;
-  z-index: 1;                   
+    position: absolute;
+    z-index: 1;
     left: 80%;
     top: 58%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
 
-  width: 44vw;
-  height: 44vw;
-  border-radius: 500px 500px 0 500px;
-  backdrop-filter: blur(100px);
-  border: 1px solid rgba(255,255,255,.6);
-  box-shadow: 35px 35px 70px #e5e1dc, -35px -35px 70px #fffdf8;
+    width: 44vw;
+    height: 44vw;
+    border-radius: 500px 500px 0 500px;
+    backdrop-filter: blur(100px);
+    border: 1px solid rgba(255, 255, 255, .6);
+    box-shadow: 35px 35px 70px #e5e1dc, -35px -35px 70px #fffdf8;
 }
 
 .hero-right {
@@ -812,10 +815,12 @@ line {
     align-items: start;
 }
 
-#section1 {
+#project1 {
     display: grid;
-    grid-template-columns: 35% 1fr;
+    grid-template-columns: 35% 65%;
+    gap: 8rem;
     align-items: start;
+    margin-bottom: 8rem;
 }
 
 .portfolio-item {
@@ -825,34 +830,95 @@ line {
 .Project-left {
     grid-column: 1;
     align-self: start;
-    transform: scale(0.95);
-  overflow: visible;
+    overflow: visible;
+    margin-top: 5rem;
 }
+
 .Project-right {
     grid-column: 2;
     align-self: start;
-    transform: scale(0.9);
 }
 
 /* 반응형: 모바일에서는 1컬럼 스택 */
 @media (max-width: 768px) {
-    .portfolio-grid, #section1 {
+
+    .portfolio-grid,
+    #project1 {
         grid-template-columns: 1fr;
     }
 }
 
 /* project1 */
 
-.Project-left h2 {
-    font-family: 'Gmarket Sans';
-    font-weight: 400;
-    text-transform: uppercase;
-    font-size: 4rem;
-    background: linear-gradient(135deg, #f7b733, #fc4a1a);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+#project1 .right {
+    grid-column: 2;
+    align-items: center;
+    justify-content: center;
 }
+
+.project-box {
+    width: 44rem;
+    height: 40rem;
+    overflow: hidden;
+    border: 2px solid #e9e9e9;
+    border-radius: 3vw;
+    margin-top: 5rem;
+}
+
+.project-box .img_hover img {
+    width: 100%;
+}
+
+.project-box .img_hover {
+    width: 100%;
+    height: 100vw;
+    overflow: hidden;
+    position: relative;
+    background: url(./img/movie1.png) no-repeat top center/cover;
+}
+
+.project-box li:hover .img_hover {
+  transition: 3s;
+  background-position: bottom;
+}
+
+.project-box li .img_hover .bg {
+  background-color: #0000ff66;
+  position: absolute;
+  bottom: -39.9vw;
+  width: 39.9vw;
+  height: 39.9vw;
+  border-radius: 3vw 3vw 0 0;
+  transition: 0.5s;
+  filter: invert(100%);
+}
+
+.project-box li:hover .img_hover .bg {
+  bottom: 0;
+}
+
+.project-box .img_hover .buttons,
+.section.projects .buttons {
+  display: flex;
+  gap: 2vw;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.project-box .img_hover .button {
+  overflow: hidden;
+  position: relative;
+  border-radius: 50vw;
+}
+.project-box .img_hover .button .btn {
+  background-color: #fff;
+  border: none;
+}
+
+
+
+
 
 
 
@@ -915,7 +981,8 @@ iframe {
     color: #ebebeb
 }
 
-.prj_skill, .prj_Period > span:first-child {
+.prj_skill,
+.prj_Period>span:first-child {
     font-family: 'Gmarket Sans';
     font-weight: 500;
     font-size: 18px;
@@ -926,14 +993,14 @@ iframe {
     margin-top: 3rem;
 }
 
-.sub-detail > div:first-child {
+.sub-detail>div:first-child {
     font-family: 'Gmarket Sans';
     font-weight: 400;
     font-size: 17px;
     color: #666;
 }
 
-.sub-detail > div:nth-child(2) {
+.sub-detail>div:nth-child(2) {
     margin-top: 1rem;
     font-size: 17px;
     color: #666;
@@ -944,16 +1011,16 @@ iframe {
     margin-top: 2rem;
 }
 
-.planning > div:first-child {
+.planning>div:first-child {
     font-family: 'Gmarket Sans';
     font-weight: 400;
     font-size: 1rem;
     color: #666;
 }
 
-.planning > div:nth-child(2) {
+.planning>div:nth-child(2) {
     margin-top: 5px;
-color: #666;
+    color: #666;
     line-height: 1.2;
 }
 
@@ -961,16 +1028,16 @@ color: #666;
     margin-top: 1rem;
 }
 
-.develop > div:first-child {
+.develop>div:first-child {
     font-family: 'Gmarket Sans';
     font-weight: 400;
     font-size: 1rem;
     color: #666;
 }
 
-.develop > div:nth-child(2) {
+.develop>div:nth-child(2) {
     margin-top: 5px;
-color: #666;
+    color: #666;
     line-height: 1.2;
 }
 
@@ -978,16 +1045,16 @@ color: #666;
     margin-top: 1rem;
 }
 
-.real > div:first-child {
+.real>div:first-child {
     font-family: 'Gmarket Sans';
     font-weight: 400;
     font-size: 1rem;
     color: #666;
 }
 
-.real > div:nth-child(2) {
+.real>div:nth-child(2) {
     margin-top: 5px;
-color: #666;
+    color: #666;
     line-height: 1.2;
 }
 
@@ -1000,91 +1067,104 @@ color: #666;
 }
 
 .cta {
-  padding: 1rem 0;
-  font-family: "GmarketSans";
-  font-size: 18px;
-  justify-content: flex-end; /* 오른쪽 정렬 */
+    padding: 1rem 0;
+    font-family: "GmarketSans";
+    font-size: 18px;
+    justify-content: flex-end;
+    /* 오른쪽 정렬 */
 }
+
 .cta span {
-  display: inline-block;
+    display: inline-block;
 }
-#section2 .btn {
-  padding: 7px 15px;
-  position: relative;
-  margin-right: 0.3rem;
+
+#project2 .btn {
+    padding: 7px 15px;
+    position: relative;
+    margin-right: 0.3rem;
 }
-#section2 .btn:last-child {
-  margin-right: 0;
+
+#project2 .btn:last-child {
+    margin-right: 0;
 }
 
 .git {
-  background: url(./img/icon_github_inactive.png) top / contain no-repeat;
+    background: url(./img/icon_github_inactive.png) top / contain no-repeat;
 }
+
 .cta a:hover .git {
-  background: url(./img/icon_github_inactive3.png) center/contain no-repeat;
-  mix-blend-mode: screen;
+    background: url(./img/icon_github_inactive3.png) center/contain no-repeat;
+    mix-blend-mode: screen;
 }
+
 .cta span.git {
-  vertical-align: middle;
-  width: 25px;
-  height: 25px;
-  mix-blend-mode: screen;
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    mix-blend-mode: screen;
 }
 
 .cta .btn,
 .cta .btn:hover,
 .cta .btn:focus {
-  text-decoration: none;
+    text-decoration: none;
 }
 
-#section2 .btn.rounded i {
-  font-size: 22px;
-  margin-right: 0.3rem;
-  background: linear-gradient(135deg, #f7b733, #fc4a1a);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  mix-blend-mode: screen;
-  top: 2px;
-  transition: color .2s ease, -webkit-text-fill-color .2s ease;
+#project2 .btn.rounded i {
+    font-size: 22px;
+    margin-right: 0.3rem;
+    background: linear-gradient(135deg, #f7b733, #fc4a1a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    mix-blend-mode: screen;
+    top: 2px;
+    transition: color .2s ease, -webkit-text-fill-color .2s ease;
 }
 
 /* Hover: gradient → solid white */
-#section2 .btn.rounded:hover i {
-  background: none !important;
-  -webkit-background-clip: initial;
-  background-clip: initial;
-  -webkit-text-fill-color: #fff; /* Chrome/Safari */
-  color: #fff;                   /* Firefox 등 */
-  mix-blend-mode: normal;        /* 혼합 해제 */
-}
-#section2 .btn.rounded .txt-clr {
-  color: #333;
-  mix-blend-mode: screen;
-  letter-spacing: 0.01rem;
-}
-#section2 .btn.rounded:first-child .txt-clr {
-  top: 1px;
-  margin-left: 0.2rem;
-}
-#section2 .btn.rounded:hover .txt-clr {
-  color: white;
-  mix-blend-mode: screen;
+#project2 .btn.rounded:hover i {
+    background: none !important;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: #fff;
+    /* Chrome/Safari */
+    color: #fff;
+    /* Firefox 등 */
+    mix-blend-mode: normal;
+    /* 혼합 해제 */
 }
 
-#section2 .btn.rounded::before {
-  transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  content: "";
-  width: 50%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0px;
-  border-radius: 50px;
+#project2 .btn.rounded .txt-clr {
+    color: #333;
+    mix-blend-mode: screen;
+    letter-spacing: 0.01rem;
 }
-#section2 .btn.rounded:hover::before {
-  background: linear-gradient(135deg, #f7b733, #fc4a1a);
-  width: 100%;
+
+#project2 .btn.rounded:first-child .txt-clr {
+    top: 1px;
+    margin-left: 0.2rem;
+}
+
+#project2 .btn.rounded:hover .txt-clr {
+    color: white;
+    mix-blend-mode: screen;
+}
+
+#project2 .btn.rounded::before {
+    transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    content: "";
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    border-radius: 50px;
+}
+
+#project2 .btn.rounded:hover::before {
+    background: linear-gradient(135deg, #f7b733, #fc4a1a);
+    width: 100%;
 }
 
 
