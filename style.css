@@ -173,7 +173,7 @@ h6 {
     display: flex;
     align-items: center;
     padding: 100px 0;
-    background: #FEFAEA;
+    background: #fffcf2;
     position: relative;
     overflow: hidden;
 }
@@ -447,7 +447,7 @@ section {
 
 /* About Section */
 .about {
-    background: #FEFAEA;
+    background: #fffcf2;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -1348,6 +1348,7 @@ white-space: nowrap;
     color: white;
     padding: 40px 0;
     text-align: center;
+    margin-top: 10rem;
 }
 
 .footer .logo-icon {
