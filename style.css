@@ -107,6 +107,7 @@ h6 {
     width: 45px;
     height: 45px;
     display: block;
+    transform: scale(2);
 }
 
 #logo-lottie svg {

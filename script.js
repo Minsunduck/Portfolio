@@ -909,6 +909,34 @@ function setupPortfolioAnimations() {
     );
   }
 
+  // Project2 오른쪽 슬라이드 인 (.Project-right는 오른쪽에서 들어옴)
+  const project2Right = document.querySelector('#project2 .Project-right');
+  
+  if (project2Right) {
+    gsap.fromTo(project2Right,
+      {
+        x: '120%',
+        scale: 0.8,
+        opacity: 0,
+        rotationY: 15
+      },
+      {
+        x: '0%',
+        scale: 1,
+        opacity: 1,
+        rotationY: 0,
+        duration: 1.5,
+        ease: 'back.out(1.2)',
+        scrollTrigger: {
+          trigger: '#project2',
+          start: 'top 70%',
+          toggleActions: 'play none none reverse',
+          once: true
+        }
+      }
+    );
+  }
+
 }
 
 function setupProjectLeftObserver() {
