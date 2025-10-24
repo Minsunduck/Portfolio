@@ -678,7 +678,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setupCustomCursor();
+    
+    // Load header logo Lottie (local file: ./assets/mandarine.json)
+    try {
+        const logoContainer = document.getElementById('logo-lottie');
+        if (logoContainer && typeof lottie !== 'undefined') {
+            if (!logoContainer.dataset.lottieInit) {
+                lottie.loadAnimation({
+                    container: logoContainer,
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                    path: './lottie/mandarine.json'
+                });
+                logoContainer.dataset.lottieInit = 'true';
+            }
+        }
+    } catch (err) {
+        console.error('Failed to initialize logo Lottie', err);
+    }
 });
+
+
 
 // Custom cursor setup
 function setupCustomCursor() {
@@ -856,3 +877,68 @@ function initSimpleCursor() {
 
 // DOM 로드 후 실행
 document.addEventListener('DOMContentLoaded', initSimpleCursor);
+
+// Portfolio 슬라이드 애니메이션
+function setupPortfolioAnimations() {
+  // Project1 오른쪽 슬라이드 인
+  const project1Right = document.querySelector('#project1 .right');
+  
+  if (project1Right) {
+    // 스케일 + 슬라이드 조합
+    gsap.fromTo(project1Right, 
+      {
+        x: '120%',
+        scale: 0.8,
+        opacity: 0,
+        rotationY: 15
+      },
+      {
+        x: '0%',
+        scale: 1,
+        opacity: 1,
+        rotationY: 0,
+        duration: 1.5,
+        ease: 'back.out(1.2)',
+        scrollTrigger: {
+          trigger: '#project1',
+          start: 'top 70%',
+          toggleActions: 'play none none reverse',
+          once: true
+        }
+      }
+    );
+  }
+
+}
+
+function setupProjectLeftObserver() {
+  const target = document.querySelector('#project1');
+  const left = document.querySelector('#project1 .Project-left');
+  if (!target || !left) return;
+
+  // 인터섹션 옵저버 옵션: 요소의 25% 이상 보이면 트리거
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        left.classList.add('slide-in'); // CSS에서 정의된 클래스
+        obs.unobserve(entry.target);    // 한 번만 실행
+      }
+    });
+  }, { threshold: 0.25 });
+
+  io.observe(target);
+}
+
+
+
+// DOM 로드 후 실행
+document.addEventListener('DOMContentLoaded', () => {
+  // ...existing code...
+  setupPortfolioAnimations();
+  // ...existing code...
+});
+
+// DOMContentLoaded 또는 초기화 함수에서 호출
+document.addEventListener('DOMContentLoaded', () => {
+  setupProjectLeftObserver();
+});
