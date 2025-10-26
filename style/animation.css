@@ -1,0 +1,284 @@
+/* ==============================================
+   ANIMATION STYLES
+   ============================================== */
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes floatUp {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animation Classes for GSAP */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.slide-left {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.slide-right {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.scale-in {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* Button Hover Animations */
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(247, 183, 51, 0.4);
+}
+
+.btn_line {
+  transition: all 0.3s ease;
+}
+
+.btn_line:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(252, 74, 26, 0.3);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.btn_line::before {
+  transition: all 0.3s ease;
+}
+
+.btn_line:hover::before {
+  background: linear-gradient(135deg, #fc4a1a, #f7b733);
+}
+
+/* Header Animations */
+.header {
+  transition: all 0.3s ease;
+}
+
+.nav-menu a {
+  transition: color 0.3s ease;
+}
+
+.nav-menu a::after {
+  transition: width 0.3s ease;
+}
+
+.mobile-menu-toggle span {
+  transition: all 0.3s ease;
+}
+
+.social-link {
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+}
+
+/* Geometric Shapes Animation */
+.geometric-shape {
+  animation: rotate 10s linear infinite;
+}
+
+.geometric-shape.shape-1 {
+  animation-delay: 0s;
+}
+
+.geometric-shape.shape-2 {
+  animation-delay: 2s;
+}
+
+.geometric-shape.shape-3 {
+  animation-delay: 4s;
+}
+
+.stats-card {
+  animation: floatUp 3s ease-in-out infinite alternate;
+}
+
+/* About Section Animations */
+.about-btn,
+.about-btn-skills {
+  transition: all 0.3s ease;
+}
+
+.section-menu button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(247, 183, 51, 0.4);
+}
+
+.section-menu button.active {
+  transition: all 0.3s ease;
+}
+
+/* Skill Bar Animations */
+.skill-progress {
+  transition: width 1.5s ease-in-out;
+}
+
+#skills .bar .progress {
+  transition: width 1.2s ease;
+}
+
+#skills .bar .progress[data-delay] {
+  transition-delay: var(--delay, 0s);
+}
+
+/* Portfolio Animations */
+#project1 .Project-left {
+  will-change: transform, opacity;
+}
+
+#project1 .Project-left.slide-in {
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform 0.9s cubic-bezier(0.22, 0.9, 0.36, 1), opacity 0.6s ease;
+}
+
+#project1 .right.animated {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.project-box .img_hover {
+  transition: 3s;
+}
+
+.project-box li:hover .img_hover {
+  transition: 3s;
+  background-position: bottom;
+}
+
+/* Contact Animations */
+.contact-item {
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateX(10px);
+}
+
+.contact-value {
+  transition: color 0.3s ease;
+}
+
+.form-group input,
+.form-group textarea {
+  transition: border-color 0.3s ease;
+}
+
+.submit-btn {
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(247, 183, 51, 0.4);
+}
+
+/* Testimonials Animations */
+.testimonial-item {
+  transition: opacity 0.5s ease;
+}
+
+.testimonial-nav button {
+  transition: all 0.3s ease;
+}
+
+.testimonial-nav button:hover {
+  background: linear-gradient(135deg, #f7b733, #fc4a1a);
+  color: white;
+  border-color: #f7b733;
+}
+
+/* Loading Animation */
+.loading {
+  transition: opacity 0.5s ease;
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Custom Cursor Animation */
+.custom-cursor {
+  transition: transform 0.05s ease, opacity 0.3s ease;
+}
+
+.custom-cursor.hover {
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+/* Quick Menu Animation */
+.dot {
+  transition: all 0.5ms;
+}
+
+/* Scroll Progress Animation */
+.scroll-progress {
+  transform-origin: left;
+  transform: scaleX(0);
+}
