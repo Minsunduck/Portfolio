@@ -504,7 +504,7 @@ function setupPortfolioAnimations() {
         rotationY: 15,
       },
       {
-        x: "0%",
+        x: "10%",
         scale: 1,
         opacity: 1,
         rotationY: 0,
@@ -562,7 +562,7 @@ function setupPortfolioAnimations() {
         rotationY: 15,
       },
       {
-        x: "0%",
+        x: "10%",
         scale: 1,
         opacity: 1,
         rotationY: 0,

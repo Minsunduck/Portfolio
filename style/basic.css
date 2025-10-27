@@ -456,9 +456,9 @@ h2.section-title::before {
   transform: translateY(-50%);
   z-index: 2;
   font-size: 16px;
-  color: #fff;
+  color: #ff922bbb;
   pointer-events: none;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 2px rgba(255, 92, 16, 0.63);
 }
 
 /* 진입 애니메이션 지연(선택) */
@@ -532,6 +532,7 @@ h2.section-title::before {
   grid-template-columns: 35% 65%;
   gap: 8rem;
   align-items: start;
+  margin-top: -3rem;
   margin-bottom: 8rem;
 }
 
@@ -593,6 +594,7 @@ h2.section-title::before {
   grid-column: 2;
   align-items: center;
   justify-content: center;
+  margin-top: 3rem; /* 아래로 3rem만큼 이동 */
 }
 
 .project-box {
@@ -601,7 +603,7 @@ h2.section-title::before {
   overflow: hidden;
   border: 2px solid #e9e9e9;
   border-radius: 3vw;
-  margin-top: 7rem;
+  margin-top: 4rem;
 }
 
 .project-box .img_hover img {
@@ -645,13 +647,13 @@ h2.section-title::before {
   width: 100%;
   position: relative;
   display: flex;
-  transform: translateY(-990px);
+  transform: translateY(-1100px);
 }
 
 .crop {
   transform: scale(0.5);
-  width: 600px;
-  height: 1200px;
+  width: 700px;
+  height: 1400px;
   position: absolute;
   overflow: hidden;
   border-radius: 12px;
@@ -663,7 +665,7 @@ iframe {
   position: absolute;
   border: 0;
   display: block;
-  transform: scale(1.2);
+  transform: scale(1.3);
 }
 
 .prj_title,
@@ -841,6 +843,35 @@ iframe {
   cursor: pointer;
 }
 
+/* project4 */
+#project4 {
+  display: grid;
+  align-items: start;
+  margin-bottom: 8rem;
+}
+
+#project4 .left {
+  grid-column: 1;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-50px);
+}
+
+#project4 .Project-right {
+  grid-column: 2;
+  align-self: center;
+  overflow: visible;
+  transform: translateX(-100px);
+}
+
+#project4 .project-box .img_hover {
+  width: 100%;
+  height: 50vw;
+  overflow: hidden;
+  position: relative;
+  background: url(../img/LivAndGrow.jpg) no-repeat top center/cover;
+  cursor: pointer;
+}
 
 /* Testimonials Section */
 .testimonials {
